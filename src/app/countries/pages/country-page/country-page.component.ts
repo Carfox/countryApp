@@ -11,6 +11,7 @@ import { Country } from '../../interfaces/country';
 })
 export class CountryPageComponent implements OnInit {
   public country?: Country;
+  public isLoading: Boolean = false;
   constructor(
     private activatedRoute: ActivatedRoute,
     private router: Router,

@@ -5,19 +5,21 @@ import { CountryService } from '../../services/country.service';
 @Component({
   selector: 'app-by-country-page',
   templateUrl: './by-country-page.component.html',
-  styles: [
-  ]
+  styles: [],
 })
 export class ByCountryPageComponent {
-  public countries: Country[] = []
+  public countries: Country[] = [];
+  public isLoading: boolean = false;
 
-  constructor( private countryService: CountryService ){}
+  constructor(private countryService: CountryService) {}
 
-  searchByCountry( value: string ) {
-    this.countryService.searchCountry(value)
-        .subscribe(countries => {
-          this.countries = countries
-        })
+  searchByCountry(value: string) {
+  this.isLoading = true;
+
+    this.countryService.searchCountry(value).subscribe((countries) => {
+      this.countries = countries;
+          this.isLoading = false;
+
+    });
   }
-
 }
